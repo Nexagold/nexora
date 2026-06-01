@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexora - Fun Zone</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#0f172a,#111827);
+    color:white;
+    text-align:center;
+}
+
+header{
+    padding:30px;
+    background:#0b1220;
+    border-bottom:1px solid #1f2937;
+}
+
+h1{
+    margin:0;
+    color:#60a5fa;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#3b82f6;
+    color:white;
+    margin-top:10px;
+    transition:0.2s;
+}
+
+button:hover{
+    background:#2563eb;
+    transform:scale(1.05);
+}
+
+input, textarea{
+    width:90%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+}
+
+.result{
+    margin-top:15px;
+    font-size:18px;
+    color:#22c55e;
+    min-height:20px;
+}
+
+.wheel{
+    font-size:40px;
+    margin:10px 0;
+    transition:0.3s;
+}
+a{
+    color:#93c5fd;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎮 Nexora Fun Zone</h1>
+<p><a href="index.html">⬅ Back to Home</a></p>
+</header>
+
+<div class="container">
+
+<!-- Coin Flip -->
+<div class="card">
+<h2>🪙 Coin Flip</h2>
+<button onclick="flipCoin()">Flip</button>
+<div class="result" id="coin"></div>
+</div>
+
+<!-- Dice -->
+<div class="card">
+<h2>🎲 Dice Roll</h2>
+<button onclick="rollDice()">Roll</button>
+<div class="result" id="dice"></div>
+</div>
+
+<!-- Random Picker -->
+<div class="card">
+<h2>🎯 Random Picker</h2>
+<textarea id="names" placeholder="Enter names (one per line)"></textarea>
+<button onclick="pickName()">Pick</button>
+<div class="result" id="pick"></div>
+</div>
+
+<!-- Lucky Wheel -->
+<div class="card">
+<h2>🎡 Lucky Wheel</h2>
+<div class="wheel" id="wheel">🎡</div>
+<button onclick="spinWheel()">Spin</button>
+<div class="result" id="wheelResult"></div>
+</div>
+
+</div>
+
+<script>
+
+// Coin Flip
+function flipCoin(){
+    let r = Math.random() < 0.5 ? "Heads 🪙" : "Tails 🪙";
+    document.getElementById("coin").innerText = r;
+}
+
+// Dice
+function rollDice(){
+    let r = Math.floor(Math.random()*6)+1;
+    document.getElementById("dice").innerText = "You got: " + r;
+}
+
+// Random Picker
+function pickName(){
+    let names = document.getElementById("names")
+    .value.split("\n")
+    .filter(n => n.trim() !== "");
+
+    if(names.length === 0){
+        alert("Enter names!");
+        return;
+    }
+
+    let r = names[Math.floor(Math.random()*names.length)];
+    document.getElementById("pick").innerText = "Winner: " + r;
+}
+
+// Lucky Wheel
+function spinWheel(){
+    const items = ["🔥 Jackpot", "🎁 Bonus", "😄 Try Again", "⭐ Lucky Day", "💎 Reward"];
+
+    let wheel = document.getElementById("wheel");
+    let result = document.getElementById("wheelResult");
+
+    let counter = 0;
+
+    let interval = setInterval(() => {
+        wheel.innerText = items[counter % items.length];
+        counter++;
+    }, 100);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        let final = items[Math.floor(Math.random()*items.length)];
+        wheel.innerText = "🎡";
+        result.innerText = final;
+    }, 2000);
+}
+
+</script>
+
+</body>
+</html>
