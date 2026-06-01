@@ -6,173 +6,309 @@
 <title>Nexora - Fun Zone</title>
 
 <style>
-body{
+
+*{
     margin:0;
-    font-family:Arial;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
     background:linear-gradient(135deg,#0f172a,#111827);
     color:white;
-    text-align:center;
+    min-height:100vh;
 }
 
 header{
-    padding:30px;
     background:#0b1220;
+    padding:25px;
+    text-align:center;
     border-bottom:1px solid #1f2937;
 }
 
-h1{
-    margin:0;
+header h1{
     color:#60a5fa;
+    margin-bottom:10px;
+}
+
+header a{
+    color:#93c5fd;
+    text-decoration:none;
+}
+
+.stats{
+    max-width:1000px;
+    margin:25px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    padding:0 20px;
+}
+
+.stat-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.stat-card h3{
+    color:#60a5fa;
+    margin-bottom:8px;
 }
 
 .container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:20px;
-    padding:30px;
 }
 
 .card{
     background:#1e293b;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.4);
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 0 15px rgba(0,0,0,.25);
+}
+
+.card h2{
+    margin-bottom:15px;
 }
 
 button{
-    padding:10px 20px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
     background:#3b82f6;
     color:white;
-    margin-top:10px;
-    transition:0.2s;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.2s;
 }
 
 button:hover{
-    background:#2563eb;
-    transform:scale(1.05);
-}
-
-input, textarea{
-    width:90%;
-    padding:10px;
-    margin-top:10px;
-    border-radius:8px;
-    border:none;
-    outline:none;
+    transform:translateY(-2px);
 }
 
 .result{
     margin-top:15px;
+    min-height:25px;
     font-size:18px;
     color:#22c55e;
-    min-height:20px;
+}
+
+textarea{
+    width:100%;
+    min-height:120px;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    resize:vertical;
 }
 
 .wheel{
-    font-size:40px;
-    margin:10px 0;
-    transition:0.3s;
+    font-size:42px;
+    margin:15px 0;
 }
-a{
-    color:#93c5fd;
-    text-decoration:none;
+
+footer{
+    margin-top:40px;
+    text-align:center;
+    padding:20px;
+    color:#94a3b8;
 }
+
+.level{
+    font-size:24px;
+    font-weight:bold;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🎮 Nexora Fun Zone</h1>
-<p><a href="index.html">⬅ Back to Home</a></p>
+    <h1>🎮 Nexora Fun Zone</h1>
+    <p><a href="index.html">⬅ Back to Home</a></p>
 </header>
+
+<div class="stats">
+
+    <div class="stat-card">
+        <h3>🏆 XP</h3>
+        <div id="xp">0</div>
+    </div>
+
+    <div class="stat-card">
+        <h3>⭐ Level</h3>
+        <div class="level" id="level">Bronze</div>
+    </div>
+
+</div>
 
 <div class="container">
 
-<!-- Coin Flip -->
-<div class="card">
-<h2>🪙 Coin Flip</h2>
-<button onclick="flipCoin()">Flip</button>
-<div class="result" id="coin"></div>
+    <div class="card">
+        <h2>🪙 Coin Flip</h2>
+        <button onclick="flipCoin()">Flip Coin</button>
+        <div class="result" id="coinResult"></div>
+    </div>
+
+    <div class="card">
+        <h2>🎲 Dice Roll</h2>
+        <button onclick="rollDice()">Roll Dice</button>
+        <div class="result" id="diceResult"></div>
+    </div>
+
+    <div class="card">
+        <h2>🎯 Random Picker</h2>
+
+        <textarea
+        id="names"
+        placeholder="Enter names, one per line"></textarea>
+
+        <br><br>
+
+        <button onclick="pickName()">Pick Winner</button>
+
+        <div class="result" id="pickerResult"></div>
+    </div>
+
+    <div class="card">
+        <h2>🎡 Lucky Wheel</h2>
+
+        <div class="wheel" id="wheel">🎡</div>
+
+        <button onclick="spinWheel()">Spin Wheel</button>
+
+        <div class="result" id="wheelResult"></div>
+    </div>
+
 </div>
 
-<!-- Dice -->
-<div class="card">
-<h2>🎲 Dice Roll</h2>
-<button onclick="rollDice()">Roll</button>
-<div class="result" id="dice"></div>
-</div>
-
-<!-- Random Picker -->
-<div class="card">
-<h2>🎯 Random Picker</h2>
-<textarea id="names" placeholder="Enter names (one per line)"></textarea>
-<button onclick="pickName()">Pick</button>
-<div class="result" id="pick"></div>
-</div>
-
-<!-- Lucky Wheel -->
-<div class="card">
-<h2>🎡 Lucky Wheel</h2>
-<div class="wheel" id="wheel">🎡</div>
-<button onclick="spinWheel()">Spin</button>
-<div class="result" id="wheelResult"></div>
-</div>
-
-</div>
+<footer>
+    © Nexora Entertainment Platform
+</footer>
 
 <script>
 
-// Coin Flip
+let xp = Number(localStorage.getItem("nexora_xp")) || 0;
+
+function updateLevel(){
+
+    let level = "Bronze 🥉";
+
+    if(xp >= 100) level = "Silver 🥈";
+    if(xp >= 250) level = "Gold 🥇";
+    if(xp >= 500) level = "Diamond 💎";
+    if(xp >= 1000) level = "Master 👑";
+
+    document.getElementById("level").innerText = level;
+}
+
+function updateXP(){
+    document.getElementById("xp").innerText = xp;
+    localStorage.setItem("nexora_xp", xp);
+    updateLevel();
+}
+
+function addXP(amount){
+    xp += amount;
+    updateXP();
+}
+
+updateXP();
+
 function flipCoin(){
-    let r = Math.random() < 0.5 ? "Heads 🪙" : "Tails 🪙";
-    document.getElementById("coin").innerText = r;
+
+    let result =
+    Math.random() < 0.5
+    ? "Heads 🪙"
+    : "Tails 🪙";
+
+    document.getElementById("coinResult").innerText =
+    result;
+
+    addXP(5);
 }
 
-// Dice
 function rollDice(){
-    let r = Math.floor(Math.random()*6)+1;
-    document.getElementById("dice").innerText = "You got: " + r;
+
+    let dice =
+    Math.floor(Math.random()*6)+1;
+
+    document.getElementById("diceResult").innerText =
+    "You rolled: " + dice;
+
+    addXP(5);
 }
 
-// Random Picker
 function pickName(){
-    let names = document.getElementById("names")
-    .value.split("\n")
+
+    let names =
+    document.getElementById("names")
+    .value
+    .split("\n")
     .filter(n => n.trim() !== "");
 
     if(names.length === 0){
-        alert("Enter names!");
+        alert("Please enter names.");
         return;
     }
 
-    let r = names[Math.floor(Math.random()*names.length)];
-    document.getElementById("pick").innerText = "Winner: " + r;
+    let winner =
+    names[Math.floor(Math.random()*names.length)];
+
+    document.getElementById("pickerResult").innerText =
+    "Winner: " + winner;
+
+    addXP(10);
 }
 
-// Lucky Wheel
 function spinWheel(){
-    const items = ["🔥 Jackpot", "🎁 Bonus", "😄 Try Again", "⭐ Lucky Day", "💎 Reward"];
 
-    let wheel = document.getElementById("wheel");
-    let result = document.getElementById("wheelResult");
+    const prizes = [
+        "🔥 Jackpot",
+        "🎁 Bonus",
+        "⭐ Lucky Day",
+        "💎 Reward",
+        "😄 Try Again"
+    ];
+
+    let wheel =
+    document.getElementById("wheel");
+
+    let result =
+    document.getElementById("wheelResult");
 
     let counter = 0;
 
     let interval = setInterval(() => {
-        wheel.innerText = items[counter % items.length];
+
+        wheel.innerText =
+        prizes[counter % prizes.length];
+
         counter++;
-    }, 100);
+
+    },100);
 
     setTimeout(() => {
+
         clearInterval(interval);
-        let final = items[Math.floor(Math.random()*items.length)];
+
+        let prize =
+        prizes[Math.floor(Math.random()*prizes.length)];
+
         wheel.innerText = "🎡";
-        result.innerText = final;
-    }, 2000);
+
+        result.innerText = prize;
+
+        addXP(15);
+
+    },2000);
 }
 
 </script>
