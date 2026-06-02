@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About | Nexora</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070b14;
+    --card:#101827;
+    --text:#f5f7ff;
+    --muted:#98a2b3;
+    --primary:#6d5dfc;
+    --secondary:#00d4ff;
+    --border:rgba(255,255,255,.08);
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(109,93,252,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(0,212,255,.12), transparent 25%);
+    z-index:-1;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+/* NAV */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 0;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:800;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    padding:90px 0 60px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3.6rem;
+    margin-bottom:18px;
+}
+
+.hero span{
+    background:linear-gradient(90deg,var(--secondary),var(--primary));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:var(--muted);
+    max-width:760px;
+    margin:auto;
+    line-height:1.9;
+}
+
+/* STORY */
+
+.story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    padding:60px 0;
+}
+
+.card{
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:26px;
+    padding:35px;
+    backdrop-filter:blur(12px);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.card h2{
+    margin-bottom:16px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.9;
+}
+
+/* STATS */
+
+.stats{
+    padding:40px 0 80px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat{
+    text-align:center;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:35px;
+}
+
+.stat h3{
+    font-size:2.3rem;
+    margin-bottom:10px;
+    color:var(--secondary);
+}
+
+.stat p{
+    color:var(--muted);
+}
+
+/* CTA */
+
+.cta{
+    padding-bottom:90px;
+}
+
+.cta-box{
+    text-align:center;
+    padding:55px;
+    border-radius:32px;
+    border:1px solid var(--border);
+    background:
+    linear-gradient(
+        135deg,
+        rgba(109,93,252,.15),
+        rgba(0,212,255,.08)
+    );
+}
+
+.cta-box h2{
+    margin-bottom:15px;
+    font-size:2rem;
+}
+
+.cta-box p{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    padding:14px 28px;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    box-shadow:0 12px 35px rgba(109,93,252,.35);
+}
+
+/* FOOTER */
+
+footer{
+    padding:30px 0;
+    text-align:center;
+    color:var(--muted);
+    border-top:1px solid var(--border);
+}
+
+@media(max-width:900px){
+
+    .story{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:2.7rem;
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<nav>
+    <div class="logo">
+        NEX<span>ORA</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">AI Zone</a>
+        <a href="#">Community</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <h1>About <span>Nexora</span></h1>
+
+    <p>
+        Nexora is designed as a futuristic space where
+        creativity, technology and community meet.
+        A place to explore ideas, discover AI and
+        build meaningful digital experiences.
+    </p>
+
+</section>
+
+<section class="story">
+
+    <div class="card">
+        <h2>Our Vision</h2>
+        <p>
+            We imagine a digital world where people
+            do more than consume content. Nexora is
+            built to inspire creation, learning and
+            connection through modern experiences.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Why Nexora?</h2>
+        <p>
+            Most platforms feel crowded or generic.
+            Nexora focuses on atmosphere, innovation
+            and interaction — combining futuristic
+            design with meaningful engagement.
+        </p>
+    </div>
+
+</section>
+
+<section class="stats">
+
+    <div class="stats-grid">
+
+        <div class="stat">
+            <h3>AI</h3>
+            <p>Smart tools & ideas</p>
+        </div>
+
+        <div class="stat">
+            <h3>Create</h3>
+            <p>Build and explore</p>
+        </div>
+
+        <div class="stat">
+            <h3>Connect</h3>
+            <p>Community driven</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta">
+
+    <div class="cta-box">
+
+        <h2>Become part of Nexora</h2>
+
+        <p>
+            Explore a future built for creators,
+            learners and innovators.
+        </p>
+
+        <a href="#" class="btn">Join Nexora</a>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Nexora — Future Starts Here
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
