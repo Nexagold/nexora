@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Nexora</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070b14;
+    --text:#f5f7ff;
+    --muted:#98a2b3;
+    --primary:#6d5dfc;
+    --secondary:#00d4ff;
+    --border:rgba(255,255,255,.08);
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(109,93,252,.22), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(0,212,255,.15), transparent 25%);
+    z-index:-2;
+}
+
+.bg-orb{
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        rgba(109,93,252,.22),
+        rgba(0,212,255,.12)
+    );
+    filter:blur(70px);
+    animation:float 8s ease-in-out infinite;
+    z-index:-1;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-25px);
+    }
+}
+
+.login-card{
+    width:min(430px,92%);
+    background:rgba(255,255,255,.04);
+    border:1px solid var(--border);
+    backdrop-filter:blur(18px);
+    border-radius:34px;
+    padding:42px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.logo{
+    text-align:center;
+    font-size:1.9rem;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.subtitle{
+    text-align:center;
+    color:var(--muted);
+    margin-bottom:35px;
+    line-height:1.7;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:10px;
+    font-size:.95rem;
+    color:#dbe1ea;
+}
+
+input{
+    width:100%;
+    padding:16px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.03);
+    color:white;
+    outline:none;
+    transition:.3s;
+    font-size:1rem;
+}
+
+input:focus{
+    border-color:rgba(0,212,255,.35);
+    box-shadow:0 0 0 4px rgba(0,212,255,.08);
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:18px 0 28px;
+    font-size:.92rem;
+}
+
+.options a{
+    color:var(--secondary);
+    text-decoration:none;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--muted);
+}
+
+.remember input{
+    width:auto;
+}
+
+.login-btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:18px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    box-shadow:0 15px 35px rgba(109,93,252,.35);
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-3px);
+}
+
+.divider{
+    text-align:center;
+    color:var(--muted);
+    margin:26px 0;
+    position:relative;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:38%;
+    height:1px;
+    background:rgba(255,255,255,.08);
+}
+
+.divider::before{
+    left:0;
+}
+
+.divider::after{
+    right:0;
+}
+
+.social{
+    display:flex;
+    gap:14px;
+}
+
+.social button{
+    flex:1;
+    padding:14px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.social button:hover{
+    background:rgba(255,255,255,.06);
+}
+
+.signup{
+    margin-top:28px;
+    text-align:center;
+    color:var(--muted);
+}
+
+.signup a{
+    color:var(--secondary);
+    text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg-orb"></div>
+
+<div class="login-card">
+
+    <div class="logo">
+        NEX<span>ORA</span>
+    </div>
+
+    <p class="subtitle">
+        Access your futuristic workspace and continue exploring.
+    </p>
+
+    <form>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter password">
+        </div>
+
+        <div class="options">
+
+            <label class="remember">
+                <input type="checkbox">
+                Remember me
+            </label>
+
+            <a href="#">Forgot Password?</a>
+
+        </div>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+    </form>
+
+    <div class="divider">
+        OR
+    </div>
+
+    <div class="social">
+        <button>Google</button>
+        <button>GitHub</button>
+    </div>
+
+    <div class="signup">
+        Don't have an account?
+        <a href="#">Sign up</a>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
