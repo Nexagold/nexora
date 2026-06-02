@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | Nexora</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#070b14;
+    --sidebar:#0d1422;
+    --card:rgba(255,255,255,.04);
+    --text:#f5f7ff;
+    --muted:#98a2b3;
+    --primary:#6d5dfc;
+    --secondary:#00d4ff;
+    --border:rgba(255,255,255,.08);
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 20%, rgba(109,93,252,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(0,212,255,.12), transparent 25%);
+    z-index:-1;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:270px 1fr;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    background:rgba(13,20,34,.7);
+    border-right:1px solid var(--border);
+    padding:30px;
+    backdrop-filter:blur(16px);
+}
+
+.logo{
+    font-size:1.7rem;
+    font-weight:800;
+    margin-bottom:40px;
+}
+
+.logo span{
+    color:var(--secondary);
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:var(--muted);
+    padding:14px 18px;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:rgba(255,255,255,.05);
+    color:white;
+    border:1px solid rgba(0,212,255,.15);
+}
+
+/* MAIN */
+
+.main{
+    padding:35px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.topbar h1{
+    font-size:2rem;
+}
+
+.user{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.avatar{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+    margin-bottom:30px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:28px;
+    backdrop-filter:blur(12px);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.card h3{
+    color:var(--muted);
+    margin-bottom:12px;
+    font-size:.95rem;
+}
+
+.value{
+    font-size:2rem;
+    font-weight:800;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+/* AI PANEL */
+
+.ai-panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:32px;
+    padding:30px;
+    backdrop-filter:blur(12px);
+}
+
+.ai-panel h2{
+    margin-bottom:15px;
+}
+
+.ai-panel p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:22px;
+}
+
+.workspace{
+    border-radius:22px;
+    padding:22px;
+    background:#0d1422;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.prompt{
+    color:#cfd8e3;
+    margin-bottom:16px;
+}
+
+.response{
+    color:var(--secondary);
+    line-height:1.7;
+}
+
+/* ACTIVITY */
+
+.activity{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:32px;
+    padding:28px;
+    backdrop-filter:blur(12px);
+}
+
+.activity h2{
+    margin-bottom:20px;
+}
+
+.item{
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.item:last-child{
+    border:none;
+}
+
+.item strong{
+    display:block;
+    margin-bottom:6px;
+}
+
+.item span{
+    color:var(--muted);
+    font-size:.92rem;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .topbar{
+        flex-direction:column;
+        gap:20px;
+        align-items:flex-start;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NEX<span>ORA</span>
+        </div>
+
+        <div class="menu">
+            <a class="active" href="#">Dashboard</a>
+            <a href="ai-zone.html">AI Zone</a>
+            <a href="#">Projects</a>
+            <a href="#">Community</a>
+            <a href="#">Rewards</a>
+            <a href="login.html">Logout</a>
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <h1>Dashboard</h1>
+
+            <div class="user">
+                <span>Welcome back</span>
+                <div class="avatar"></div>
+            </div>
+
+        </div>
+
+        <section class="stats">
+
+            <div class="card">
+                <h3>AI Sessions</h3>
+                <div class="value">24</div>
+            </div>
+
+            <div class="card">
+                <h3>Projects</h3>
+                <div class="value">8</div>
+            </div>
+
+            <div class="card">
+                <h3>Rewards</h3>
+                <div class="value">1420</div>
+            </div>
+
+        </section>
+
+        <section class="grid">
+
+            <div class="ai-panel">
+
+                <h2>AI Workspace</h2>
+
+                <p>
+                    Explore prompts, create ideas and experiment with intelligent tools.
+                </p>
+
+                <div class="workspace">
+
+                    <div class="prompt">
+                        > Generate futuristic landing page ideas
+                    </div>
+
+                    <div class="response">
+                        AI suggests immersive layouts, neon UI systems,
+                        animated sections and interactive storytelling.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="activity">
+
+                <h2>Recent Activity</h2>
+
+                <div class="item">
+                    <strong>AI Assistant Used</strong>
+                    <span>2 hours ago</span>
+                </div>
+
+                <div class="item">
+                    <strong>New Reward Earned</strong>
+                    <span>Yesterday</span>
+                </div>
+
+                <div class="item">
+                    <strong>Community Joined</strong>
+                    <span>3 days ago</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
