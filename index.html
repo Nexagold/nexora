@@ -9,7 +9,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="style.css">
 
 <style>
 *{
@@ -27,7 +31,6 @@
     --secondary:#00d4ff;
     --border:rgba(255,255,255,.08);
 }
-    <script src="script.js"></script>
 
 body{
     font-family:'Inter',sans-serif;
@@ -93,7 +96,6 @@ nav{
     color:white;
     font-weight:600;
     cursor:pointer;
-    box-shadow:0 10px 30px rgba(109,93,252,.35);
 }
 
 /* HERO */
@@ -120,10 +122,8 @@ nav{
 
 .hero-text p{
     color:var(--muted);
-    font-size:1.05rem;
     line-height:1.8;
     margin-bottom:30px;
-    max-width:550px;
 }
 
 .hero-buttons{
@@ -136,13 +136,11 @@ nav{
     border-radius:16px;
     text-decoration:none;
     font-weight:600;
-    transition:.3s;
 }
 
 .primary{
     background:linear-gradient(135deg,var(--primary),var(--secondary));
     color:white;
-    box-shadow:0 12px 35px rgba(109,93,252,.35);
 }
 
 .secondary{
@@ -150,12 +148,6 @@ nav{
     color:white;
     background:rgba(255,255,255,.03);
 }
-
-.btn:hover{
-    transform:translateY(-3px);
-}
-
-/* HERO VISUAL */
 
 .visual{
     display:flex;
@@ -169,30 +161,6 @@ nav{
     background:
     radial-gradient(circle at 30% 30%, rgba(255,255,255,.15), transparent),
     linear-gradient(135deg,var(--primary),var(--secondary));
-    filter:blur(.2px);
-    animation:float 6s ease-in-out infinite;
-    box-shadow:
-    0 0 60px rgba(109,93,252,.35),
-    0 0 120px rgba(0,212,255,.12);
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-18px)}
-}
-
-/* FEATURES */
-
-.section-title{
-    text-align:center;
-    font-size:2rem;
-    margin-bottom:12px;
-}
-
-.section-sub{
-    text-align:center;
-    color:var(--muted);
-    margin-bottom:50px;
 }
 
 .features{
@@ -210,55 +178,18 @@ nav{
     border:1px solid var(--border);
     border-radius:24px;
     padding:28px;
-    transition:.35s;
-    backdrop-filter:blur(10px);
 }
-
-.card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(0,212,255,.25);
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-}
-
-.card h3{
-    margin-bottom:12px;
-    font-size:1.2rem;
-}
-
-.card p{
-    color:var(--muted);
-    line-height:1.7;
-}
-
-/* CTA */
 
 .cta{
     padding:70px 0 100px;
 }
 
 .cta-box{
-    background:linear-gradient(
-        135deg,
-        rgba(109,93,252,.15),
-        rgba(0,212,255,.08)
-    );
     border:1px solid var(--border);
     border-radius:32px;
     padding:50px;
     text-align:center;
 }
-
-.cta-box h2{
-    font-size:2rem;
-    margin-bottom:15px;
-}
-
-.cta-box p{
-    color:var(--muted);
-    margin-bottom:25px;
-}
-
-/* FOOTER */
 
 footer{
     padding:30px 0;
@@ -266,45 +197,17 @@ footer{
     border-top:1px solid var(--border);
     color:var(--muted);
 }
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-        padding-top:40px;
-    }
-
-    .hero-text p{
-        margin-inline:auto;
-    }
-
-    .hero-buttons{
-        justify-content:center;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    .hero-text h1{
-        font-size:3rem;
-    }
-
-    .orb{
-        width:280px;
-        height:280px;
-    }
-}
 </style>
 </head>
+
 <body>
+
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+
+<!-- LOADER -->
 <div id="loader">
-
     <div class="loader-content">
-
         <h1 class="loader-logo">
             NEX<span>ORA</span>
         </h1>
@@ -314,30 +217,38 @@ footer{
         </div>
 
         <p>Loading Future...</p>
-
     </div>
-
 </div>
+
 <div class="container">
 
 <nav>
-    <div class="logo">NEX<span>ORA</span></div>
 
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">AI Zone</a>
-        <a href="#">Community</a>
-        <a href="#">Rewards</a>
+    <div class="logo">
+        NEX<span>ORA</span>
     </div>
 
-    <button class="nav-btn">Explore</button>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="ai-zone.html">AI Zone</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <a href="login.html" class="nav-btn">
+        Explore
+    </a>
+
 </nav>
 
 <section class="hero">
 
     <div class="hero-text">
+
         <h1>
-            Explore the <span>Future</span><br>
+            Explore the
+            <span>Future</span><br>
             of Play & AI
         </h1>
 
@@ -347,9 +258,19 @@ footer{
         </p>
 
         <div class="hero-buttons">
-            <a href="#" class="btn primary">Get Started</a>
-            <a href="#" class="btn secondary">Learn More</a>
+
+            <a href="login.html"
+               class="btn primary">
+               Get Started
+            </a>
+
+            <a href="about.html"
+               class="btn secondary">
+               Learn More
+            </a>
+
         </div>
+
     </div>
 
     <div class="visual">
@@ -360,7 +281,10 @@ footer{
 
 <section class="features">
 
-    <h2 class="section-title">Why Nexora?</h2>
+    <h2 class="section-title">
+        Why Nexora?
+    </h2>
+
     <p class="section-sub">
         Built to inspire creativity and connection.
     </p>
@@ -369,44 +293,44 @@ footer{
 
         <div class="card">
             <h3>AI Zone</h3>
-            <p>
-                Discover smart tools and futuristic experiences.
-            </p>
+            <p>Discover smart tools and futuristic experiences.</p>
         </div>
 
         <div class="card">
             <h3>Fun Challenges</h3>
-            <p>
-                Play, explore and engage through exciting activities.
-            </p>
+            <p>Play, explore and engage through exciting activities.</p>
         </div>
 
         <div class="card">
             <h3>Community</h3>
-            <p>
-                Connect with creators and grow together.
-            </p>
+            <p>Connect with creators and grow together.</p>
         </div>
 
         <div class="card">
             <h3>Rewards</h3>
-            <p>
-                Unlock progress and celebrate achievements.
-            </p>
+            <p>Unlock progress and celebrate achievements.</p>
         </div>
 
     </div>
+
 </section>
 
 <section class="cta">
 
     <div class="cta-box">
+
         <h2>Ready to enter Nexora?</h2>
+
         <p>
-            Join a new world of creativity, learning and AI.
+            Join a new world of creativity,
+            learning and AI.
         </p>
 
-        <a href="#" class="btn primary">Join Now</a>
+        <a href="login.html"
+           class="btn primary">
+           Join Now
+        </a>
+
     </div>
 
 </section>
@@ -416,6 +340,11 @@ footer{
 </footer>
 
 </div>
+
+<!-- JAVASCRIPT FILES -->
+<script src="script.js"></script>
+<script src="loader.js"></script>
+<script src="particles.js"></script>
 
 </body>
 </html>
